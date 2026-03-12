@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dang Nhap</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .login-card {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 380px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 28px;
+            font-size: 24px;
+        }
+        .form-group {
+            margin-bottom: 18px;
+        }
+        label {
+            display: block;
+            margin-bottom: 6px;
+            color: #555;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 15px;
+            transition: border-color 0.2s;
+        }
+        input[type="text"]:focus, input[type="password"]:focus {
+            border-color: #667eea;
+            outline: none;
+        }
+        .btn-login {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: opacity 0.2s;
+        }
+        .btn-login:hover { opacity: 0.9; }
+        .error-msg {
+            background: #ffe0e0;
+            color: #c0392b;
+            border: 1px solid #f5c6cb;
+            border-radius: 6px;
+            padding: 10px 14px;
+            margin-bottom: 16px;
+            font-size: 14px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-card">
+        <h2>&#128274; Dang Nhap</h2>
+        <!-- Hien thi loi neu co -->
+        <div class="error-msg" th:if="${error}" th:text="${error}"></div>
+        <form method="post" action="/login">
+            <div class="form-group">
+                <label for="username">Ten dang nhap</label>
+                <input type="text" id="username" name="username"
+                       th:value="${username}"
+                       placeholder="Nhap ten dang nhap..." required autofocus />
+            </div>
+            <div class="form-group">
+                <label for="password">Mat khau</label>
+                <input type="password" id="password" name="password"
+                       placeholder="Nhap mat khau..." required />
+            </div>
+            <button type="submit" class="btn-login">Dang Nhap</button>
+        </form>
+    </div>
+</body>
+</html>
