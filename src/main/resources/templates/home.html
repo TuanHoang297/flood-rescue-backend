@@ -41,6 +41,32 @@
             color: #667eea;
             font-weight: bold;
         }
+        .success-msg {
+            background: #e6ffed;
+            color: #1e7e34;
+            border: 1px solid #c3e6cb;
+            border-radius: 6px;
+            padding: 10px 14px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        .actions {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn-change-password {
+            display: inline-block;
+            padding: 12px 22px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 15px;
+            transition: background 0.2s;
+        }
+        .btn-change-password:hover { background: #2c81ba; }
         .btn-logout {
             display: inline-block;
             padding: 12px 32px;
@@ -61,7 +87,11 @@
         <p class="welcome-text">
             Ban da dang nhap thanh cong voi tai khoan: <span th:text="${username}"></span>
         </p>
-        <a href="/logout" class="btn-logout">&#128682; Dang Xuat</a>
+        <div class="success-msg" th:if="${success}" th:text="${success}"></div>
+        <div class="actions">
+            <a href="/change-password" class="btn-change-password">Doi Mat Khau</a>
+            <a href="/logout" class="btn-logout">&#128682; Dang Xuat</a>
+        </div>
     </div>
 </body>
 </html>
